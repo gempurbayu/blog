@@ -19,6 +19,7 @@ return redirect('/');
 Auth::routes();
 Route::get('/','PostsController@index');
 Route::get('/home', 'PostsController@index');
+Route::get('/user/activation/{token}', 'Auth\RegisterController@userActivation');
 Route::get('/{slug}', 'PostsController@show')->where('slug', '[A-Za-z0-9-_]+');
 Route::group(['middleware' => ['auth']], function() {
 	Route::post('comment/add','CommentsController@store');
